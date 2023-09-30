@@ -1,6 +1,4 @@
-import React, {
-	useReducer,
-} from 'react';
+import React, { useReducer } from 'react';
 
 enum AuthActionType {
 	EMAIL = 'email',
@@ -25,8 +23,8 @@ const AUTH_FIELDS: {
 		holder: 'Password...',
 		name: 'password',
 		action: AuthActionType.PASSWORD,
-	}
-}
+	},
+};
 
 interface AuthState {
 	[key: string]: string,
@@ -38,41 +36,41 @@ interface Action {
 }
 
 const authReducer = (state: AuthState, action: Action) => {
-	const { type, payload } = action
+	const { type, payload } = action;
 	switch (action.type) {
 		case AuthActionType.EMAIL:
 			return {
 				...state,
 				[AUTH_FIELDS.EMAIL.name]: payload,
-			}
+			};
 		case AuthActionType.PASSWORD:
-				return {
-					...state,
-					[AUTH_FIELDS.PASSWORD.name]: payload,
-				}
-		}
-}
+			return {
+				...state,
+				[AUTH_FIELDS.PASSWORD.name]: payload,
+			};
+	}
+};
 
 const AuthForm = () => {
 	const initState = {
 		[AUTH_FIELDS.EMAIL.name]: '',
 		[AUTH_FIELDS.PASSWORD.name]: '',
-	}
+	};
 
-	const [authState, dispatch] = useReducer(authReducer, initState)
+	const [authState, dispatch] = useReducer(authReducer, initState);
 
-	const changeHandler = (actionType: AuthActionType) => (event: React.FormEvent<HTMLInputElement>)=> {
-		const { target } = event
+	const changeHandler = (actionType: AuthActionType) => (event: React.FormEvent<HTMLInputElement>) => {
+		const { target } = event;
 		dispatch({
 			type: actionType,
 			payload: (target as HTMLInputElement).value,
-		})
-	}
+		});
+	};
 
 	const submitHandler = (event: React.SyntheticEvent) => {
-		event.preventDefault()
+		event.preventDefault();
 		console.log('auth State --> ', authState);
-	}
+	};
 
 	return (
 		<form className="d-flex flex-column flex-md-row align-items-center gap-3" onSubmit={submitHandler}>
@@ -90,7 +88,7 @@ const AuthForm = () => {
 				className="btn btn-outline-primary w-100"
 			>Login / Register</button>
 		</form>
-	)
-}
+	);
+};
 
-export default AuthForm
+export default AuthForm;
