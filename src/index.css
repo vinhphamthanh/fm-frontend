@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.video-share {
+    width: 374px;
+    height: 230px;
+    /*overflow: hidden;*/
+    display: flex;
+}
+
+.video-description {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 6em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+.video-description:before {
+    content: '...';
+    position: absolute;
+    background-color: white;
+    right: 1em;
+    bottom: 0;
+}
+
+.video-description:after {
+    content: '';
+    position: absolute;
+    right: 1em;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background-color: white;
+}

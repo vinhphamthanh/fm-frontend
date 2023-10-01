@@ -1,8 +1,9 @@
+import VideoList from '../components/VideoList';
 
 const Home = () => {
 	return (
 		<div>
-			HOME
+			<VideoList />
 		</div>
 	)
 }
