@@ -73,7 +73,7 @@ const AuthForm = () => {
 	};
 
 	return (
-		<form className="d-flex flex-column flex-md-row align-items-center gap-3" onSubmit={submitHandler}>
+		<form className="d-flex flex-column flex-md-row align-items-center gap-3 py-2 py-sm-0" onSubmit={submitHandler}>
 			{Object.keys(AUTH_FIELDS).map(field => (
 				<input
 					key={field}
