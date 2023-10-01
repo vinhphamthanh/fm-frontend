@@ -1,10 +1,18 @@
 body {
   margin: 0;
-  font-family: -apple-system, Pangolin, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Pangolin, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.legend {
+    position: absolute;
+    top: -14px;
+    left: 8px;
+    background-color: white;
+    padding: 0 4px;
 }
 
 code {
@@ -45,4 +53,8 @@ code {
     height: 1em;
     margin-top: 0.2em;
     background-color: white;
+}
+
+.share-form {
+    max-width: 768px;
 }

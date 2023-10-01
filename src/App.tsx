@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import Home from './page/Home';
 import Layout from './components/Layout';
+import ShareMovie from './components/ShareMovie';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
 			<Layout>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/share-your-movie" element={<div>Share movie</div>} />
+					<Route path="/share" element={<ShareMovie />} />
 				</Routes>
 			</Layout>
 		</BrowserRouter>

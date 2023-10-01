@@ -5,7 +5,7 @@ const VideoList = () => {
 			<div className="w-100 d-flex justify-content-between">
 				<div className="col-6 border border-primary">
 					<div id="trailer" className="video-share section embed-responsive embed-responsive-16by9">
-  					<video className="embed-responsive-item" controls autoPlay loop muted>
+  					<video className="embed-responsive-item" controls loop muted>
         			<source src="https://player.vimeo.com/external/325698769.sd.mp4?s=4e70164190f4b472059c9f4ca74ca0ca58056ce4&profile_id=165" type="video/mp4" />
 							Your browser does not support the video tag.
 						</video>
