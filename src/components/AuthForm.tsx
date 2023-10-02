@@ -37,7 +37,7 @@ interface Action {
 
 const authReducer = (state: AuthState, action: Action) => {
 	const { type, payload } = action;
-	switch (action.type) {
+	switch (type) {
 		case AuthActionType.EMAIL:
 			return {
 				...state,

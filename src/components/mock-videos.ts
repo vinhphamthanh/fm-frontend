@@ -1,4 +1,4 @@
-export default [
+const list = [
 	{
 		id: '1',
 		title: 'An toàn khi sử dụng xà phòng tắm',
@@ -178,5 +178,7 @@ export default [
 			'Cảnh sát trưởng Labrador thông minh, hóm hỉnh và hiểu biết, không vụ án nào mà anh ta không giải quyết được!\n' +
 			'Cảnh sát Dober dũng cảm, nhanh nhẹn và giỏi Kung Fu. Không tội phạm nào có thể trốn thoát khỏi anh ta!\n' +
 			'Mục tiêu của chúng tôi là giúp cho trẻ em từ 3-6 tuổi có thêm nhiều kiến thức về an toàn và kỹ năng sống. Ngoài ra con giúp các em nhận biết về môi trường xung quanh, hỗ trợ cùng các em phát triển toàn diện.'
-	},
+	}
 ]
+
+export default list

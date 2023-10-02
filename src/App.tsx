@@ -1,18 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import {
 	BrowserRouter,
-	Link,
 	Route,
 	Routes,
 } from 'react-router-dom';
-import Home from './page/Home';
+import './App.css';
 import Layout from './components/Layout';
 import ShareMovie from './components/ShareMovie';
+import Home from './page/Home';
 
 function App() {
-  return (
+	return (
 		<BrowserRouter>
 			<Layout>
 				<Routes>
@@ -21,7 +19,7 @@ function App() {
 				</Routes>
 			</Layout>
 		</BrowserRouter>
-  );
+	);
 }
 
 export default App;
