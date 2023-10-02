@@ -8,10 +8,11 @@ const VideoItem = ({ item }: Props) => {
 	const { id, title, videoUrl, likes, dislikes, email, description } = item;
 
 	return (
-		<div className="w-100 d-flex flex-column flex-md-row justify-content-between">
+		<div key={id} className="w-100 d-flex flex-column flex-md-row justify-content-between">
 				<div className="col-12 col-md-6 px-3 px-md-0">
 					<div className="video-wrapper">
 						<iframe
+							title={id}
 							width="100px"
 							height="50px"
 							src={videoUrl}
