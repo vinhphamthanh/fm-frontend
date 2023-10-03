@@ -5,7 +5,7 @@ interface Props {
 }
 
 const VideoItem = ({ item }: Props) => {
-	const { id, title, videoUrl, likes, dislikes, email, description } = item;
+	const { id, title, youtubeId, likes, dislikes, email, description } = item;
 
 	return (
 		<div key={id} className="w-100 d-flex flex-column flex-md-row justify-content-between">
@@ -15,7 +15,7 @@ const VideoItem = ({ item }: Props) => {
 							title={id}
 							width="100px"
 							height="50px"
-							src={videoUrl}
+							src={`https://www.youtube.com/embed/${youtubeId}`}
 							allowFullScreen
 							allowTransparency
 						></iframe>

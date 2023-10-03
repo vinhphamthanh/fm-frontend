@@ -19,7 +19,6 @@ const NavigationBar = () => {
 	const submitHandler = async (data: UserAuthInterface) => {
 		try {
 			const response: AxiosResponse = await axios.post('http://localhost:4000/login', data);
-			console.log('response --> ', response);
 			if ([200, 201].includes(response.status)) {
 				setAuth(response.data)
 			}

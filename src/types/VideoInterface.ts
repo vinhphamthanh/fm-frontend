@@ -1,9 +1,14 @@
 export interface VideoInterface {
 	id: string;
 	title: string;
-	videoUrl: string;
+	youtubeId: string;
 	email: string;
 	likes: string[];
 	dislikes: string[];
 	description: string;
+}
+
+export interface VideosStore {
+	videos: VideoInterface[];
+	setVideos: (payload: VideoInterface[]) => void;
 }
