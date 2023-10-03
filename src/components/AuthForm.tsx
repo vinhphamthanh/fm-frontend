@@ -4,6 +4,7 @@ import { UserAuthInterface } from '../types/AuthInterface';
 interface Props {
 	onSubmit: (data: UserAuthInterface) => void;
 }
+
 enum AuthActionType {
 	EMAIL = 'email',
 	PASSWORD = 'password',
@@ -75,7 +76,7 @@ const AuthForm = ({ onSubmit }: Props) => {
 		event.preventDefault();
 		console.log('auth State --> ', authState);
 		// @ts-ignore
-		onSubmit(authState)
+		onSubmit(authState);
 	};
 
 	return (

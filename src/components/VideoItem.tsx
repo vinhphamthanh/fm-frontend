@@ -1,3 +1,4 @@
+import { YOUTUBE_EMBED_URL } from '../constants';
 import { VideoInterface } from '../types/VideoInterface';
 
 interface Props {
@@ -15,9 +16,8 @@ const VideoItem = ({ item }: Props) => {
 							title={id}
 							width="100px"
 							height="50px"
-							src={`https://www.youtube.com/embed/${youtubeId}`}
+							src={`${YOUTUBE_EMBED_URL}/${youtubeId}`}
 							allowFullScreen
-							allowTransparency
 						></iframe>
 					</div>
 				</div>
@@ -42,7 +42,7 @@ const VideoItem = ({ item }: Props) => {
 					</div>
 				</div>
 			</div>
-	)
-}
+	);
+};
 
-export default VideoItem
+export default VideoItem;
