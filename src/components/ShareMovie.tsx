@@ -19,7 +19,7 @@ const ShareMovie = () => {
 		if (!email) {
 			navigate('/');
 		}
-	}, [email]);
+	}, [email, navigate]);
 
 	const submitHandler = async (event: React.SyntheticEvent) => {
 		event.preventDefault();

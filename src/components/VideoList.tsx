@@ -21,7 +21,7 @@ const VideoList = () => {
 		};
 
 		fetchVideos().then(() => {});
-	}, []);
+	}, [setVideos]);
 
 	return (
 		<div className="d-flex flex-column col-12 py-4 col-md-10 col-lg-8 mx-auto row-gap-2 row-gap-md-3">
