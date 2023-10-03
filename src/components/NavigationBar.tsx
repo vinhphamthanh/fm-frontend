@@ -1,35 +1,25 @@
-import axios, { AxiosResponse } from 'axios';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-	UserAuthInterface,
-} from '../types/AuthInterface';
+import { login } from '../api/auth';
+import useAuthStore from '../store/auth';
+import { UserAuthInterface } from '../types/AuthInterface';
 import AuthForm from './AuthForm';
 import UserSignedInNavigation from './UserSignedInNavigation';
-import useAuthStore from '../store/auth';
 
 const NavigationBar = () => {
-	const { setAuth, isAuthenticated, email } = useAuthStore()
-	const toast = useRef<HTMLElement|null>(null)
+	const { setAuth, isAuthenticated, email } = useAuthStore();
 
-	useEffect(() => {
-		toast.current = document.getElementById('liveToast')
-	}, []);
-
-	const submitHandler = async (data: UserAuthInterface) => {
-		try {
-			const response: AxiosResponse = await axios.post('http://localhost:4000/login', data);
-			if ([200, 201].includes(response.status)) {
-				setAuth(response.data)
-			}
-		} catch (e) {
-			console.error(e)
-		}
+	const submitHandler = (data: UserAuthInterface) => {
+		login(data)
+		.then(data => setAuth(data))
+		.catch(e => {
+			console.error(e.message);
+		});
 	};
 
 	const logoutHandler = () => {
-		setAuth({ email: '', isAuthenticated: false })
-	}
+		setAuth({ email: '', isAuthenticated: false });
+	};
 
 	return (
 		<div
@@ -41,8 +31,9 @@ const NavigationBar = () => {
 					<span className="px-2 fw-bold">Funny Movies</span>
 				</div>
 			</Link>
-			{isAuthenticated ? <UserSignedInNavigation email={email} logout={logoutHandler} /> : <AuthForm onSubmit={submitHandler} />}
-			</div>
+			{isAuthenticated ? <UserSignedInNavigation email={email} logout={logoutHandler} /> :
+				<AuthForm onSubmit={submitHandler} />}
+		</div>
 	);
 };
 

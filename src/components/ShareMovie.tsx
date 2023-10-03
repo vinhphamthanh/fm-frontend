@@ -1,9 +1,9 @@
-import axios from 'axios';
 import React, {
 	useEffect,
 	useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { shareMovie } from '../api/movie';
 import useAuthStore from '../store/auth';
 import { extractYoutubeId } from '../utils/url';
 
@@ -20,15 +20,9 @@ const ShareMovie = () => {
 
 	const submitHandler = async (event: React.SyntheticEvent) => {
 		event.preventDefault();
-		try {
-			await axios.post('http://localhost:4000/share', {
-				email,
-				youtubeId: extractYoutubeId(url),
-			});
-			navigate('/');
-		} catch (e) {
-			console.error(e);
-		}
+		shareMovie({ email, youtubeId: extractYoutubeId(url) })
+		.then(() => navigate('/'))
+		.catch(e => console.error(e.message));
 	};
 
 	const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
