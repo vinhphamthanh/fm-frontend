@@ -11,14 +11,16 @@ import Home from './page/Home';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Layout>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/share" element={<ShareMovie />} />
-				</Routes>
-			</Layout>
-		</BrowserRouter>
+		<>
+			<BrowserRouter>
+				<Layout>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/share" element={<ShareMovie />} />
+					</Routes>
+				</Layout>
+			</BrowserRouter>
+		</>
 	);
 }
 

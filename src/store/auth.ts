@@ -3,9 +3,12 @@ import {
 	createJSONStorage,
 	persist,
 } from 'zustand/middleware';
-import { AuthInterface } from '../types/AuthInterface';
+import {
+	AuthInterface,
+	AuthStore,
+} from '../types/AuthInterface';
 
-const useAuthStore = create(
+const useAuthStore = create<AuthStore>()(
 	persist(
 		(set, get) => ({
 			email: '',
@@ -13,7 +16,7 @@ const useAuthStore = create(
 			setAuth: (payload: AuthInterface) => set({
 				email: payload.email,
 				isAuthenticated: payload.isAuthenticated,
-			})
+			}),
 		}),
 		{
 			name: 'funny-movies-auth',
@@ -22,4 +25,4 @@ const useAuthStore = create(
 	),
 );
 
-export default useAuthStore();
+export default useAuthStore;

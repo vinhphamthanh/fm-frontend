@@ -1,10 +1,36 @@
-import React from 'react';
+import axios, { AxiosResponse } from 'axios';
+import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import {
+	UserAuthInterface,
+} from '../types/AuthInterface';
 import AuthForm from './AuthForm';
 import UserSignedInNavigation from './UserSignedInNavigation';
-import { Link } from 'react-router-dom';
+import useAuthStore from '../store/auth';
 
 const NavigationBar = () => {
-	const switching = true;
+	const { setAuth, isAuthenticated, email } = useAuthStore()
+	const toast = useRef<HTMLElement|null>(null)
+
+	useEffect(() => {
+		toast.current = document.getElementById('liveToast')
+	}, []);
+
+	const submitHandler = async (data: UserAuthInterface) => {
+		try {
+			const response: AxiosResponse = await axios.post('http://localhost:4000/login', data);
+			console.log('response --> ', response);
+			if ([200, 201].includes(response.status)) {
+				setAuth(response.data)
+			}
+		} catch (e) {
+			console.error(e)
+		}
+	};
+
+	const logoutHandler = () => {
+		setAuth({ email: '', isAuthenticated: false })
+	}
 
 	return (
 		<div
@@ -16,7 +42,7 @@ const NavigationBar = () => {
 					<span className="px-2 fw-bold">Funny Movies</span>
 				</div>
 			</Link>
-			{switching ? <UserSignedInNavigation /> : <AuthForm />}
+			{isAuthenticated ? <UserSignedInNavigation email={email} logout={logoutHandler} /> : <AuthForm onSubmit={submitHandler} />}
 			</div>
 	);
 };

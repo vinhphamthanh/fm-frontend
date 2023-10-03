@@ -1,5 +1,9 @@
 import React, { useReducer } from 'react';
+import { UserAuthInterface } from '../types/AuthInterface';
 
+interface Props {
+	onSubmit: (data: UserAuthInterface) => void;
+}
 enum AuthActionType {
 	EMAIL = 'email',
 	PASSWORD = 'password',
@@ -51,7 +55,7 @@ const authReducer = (state: AuthState, action: Action) => {
 	}
 };
 
-const AuthForm = () => {
+const AuthForm = ({ onSubmit }: Props) => {
 	const initState = {
 		[AUTH_FIELDS.EMAIL.name]: '',
 		[AUTH_FIELDS.PASSWORD.name]: '',
@@ -70,6 +74,8 @@ const AuthForm = () => {
 	const submitHandler = (event: React.SyntheticEvent) => {
 		event.preventDefault();
 		console.log('auth State --> ', authState);
+		// @ts-ignore
+		onSubmit(authState)
 	};
 
 	return (
