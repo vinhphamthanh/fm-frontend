@@ -16,7 +16,6 @@
 1. Write test
 2. Write test (again)
 3. Include integration test
-4. Deploy to cloud
 
 #
 -- Back-End Part
