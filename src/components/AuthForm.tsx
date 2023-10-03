@@ -74,7 +74,6 @@ const AuthForm = ({ onSubmit }: Props) => {
 
 	const submitHandler = (event: React.SyntheticEvent) => {
 		event.preventDefault();
-		console.log('auth State --> ', authState);
 		// @ts-ignore
 		onSubmit(authState);
 	};

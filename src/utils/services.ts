@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ApiType } from '../types/General';
 
-const SERVER = 'http://128.199.203.93:4000'
+const SERVER = 'http://157.245.48.109:4000'
 // const SERVER = 'http://localhost:4000'
 
 export const createService = (apiType: ApiType, method = 'GET') => async (data: any) => {
