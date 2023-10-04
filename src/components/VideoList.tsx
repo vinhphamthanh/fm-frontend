@@ -1,26 +1,15 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import useVideosStore from '../store/videos';
+import { ApiType } from '../types/General';
 import VideoItem from './VideoItem';
+import { fetchMovie } from '../api/movie';
 
 const VideoList = () => {
 	const { videos, setVideos } = useVideosStore();
 
 	useEffect(() => {
-		const fetchVideos = async () => {
-			try {
-				const response = await axios.get('http://localhost:4000/');
-
-				if ([200, 201].includes(response.status)) {
-					const { data } = response || {};
-					setVideos(data);
-				}
-			} catch (e) {
-				console.error(e);
-			}
-		};
-
-		fetchVideos().then(() => {});
+		fetchMovie().then(data => setVideos(data)).catch(e => console.error(e))
 	}, [setVideos]);
 
 	return (

@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { EMAIL_REGEX } from '../constants';
 import { UserAuthInterface } from '../types/AuthInterface';
 
 interface Props {
@@ -13,6 +14,7 @@ enum AuthActionType {
 interface Field {
 	holder: string,
 	name: string,
+	type: string,
 	action: AuthActionType,
 }
 
@@ -22,11 +24,13 @@ const AUTH_FIELDS: {
 	EMAIL: {
 		holder: 'Email...',
 		name: 'email',
+		type: 'email',
 		action: AuthActionType.EMAIL,
 	},
 	PASSWORD: {
 		holder: 'Password...',
 		name: 'password',
+		type: 'password',
 		action: AuthActionType.PASSWORD,
 	},
 };
@@ -78,6 +82,8 @@ const AuthForm = ({ onSubmit }: Props) => {
 		onSubmit(authState);
 	};
 
+	const disabledSubmission = !EMAIL_REGEX.test(authState.email);
+
 	return (
 		<form className="d-flex flex-column flex-md-row align-items-center gap-3 py-2 py-sm-0" onSubmit={submitHandler}>
 			{Object.keys(AUTH_FIELDS).map(field => (
@@ -85,11 +91,13 @@ const AuthForm = ({ onSubmit }: Props) => {
 					key={field}
 					className="form-control"
 					placeholder={AUTH_FIELDS[field].holder}
+					type={AUTH_FIELDS[field].type}
 					name={AUTH_FIELDS[field].name}
 					onChange={changeHandler(AUTH_FIELDS[field].action)}
 				/>
 			))}
 			<button
+				disabled={disabledSubmission}
 				type="submit"
 				className="btn btn-outline-primary w-100"
 			>Login / Register</button>

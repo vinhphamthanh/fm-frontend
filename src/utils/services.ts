@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { ApiType } from '../types/General';
 
-const SERVER = 'http://157.245.48.109:4000'
+const SERVER = 'https://funny-movies-nestjs-28551f9ce07a.herokuapp.com'
 // const SERVER = 'http://localhost:4000'
 
-export const createService = (apiType: ApiType, method = 'GET') => async (data: any) => {
+export const createService = (apiType: ApiType, method = 'GET') => async (data: any = null) => {
 	const url = createUrl(apiType)
 	const defaultOpts = {
 		method,

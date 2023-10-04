@@ -65,8 +65,8 @@ const ShareMovie = () => {
 			>
 				<div className="legend">Share a Youtube movie</div>
 				<div className="py-2 px-sm-3">Youtube URL:</div>
-				<div className="col-12 col-sm-8 pe-sm-5 d-flex flex-column justify-content-center" onSubmit={submitHandler}>
-					<div className="d-flex flex-column position-relative mb-4 border">
+				<div className="col-12 col-sm-8 pe-sm-2 d-flex flex-column justify-content-center" onSubmit={submitHandler}>
+					<div className="d-flex flex-column position-relative mb-4">
 						<input
 							className="form-control"
 							value={url}
