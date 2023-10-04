@@ -1,15 +1,13 @@
-import axios from 'axios';
 import { useEffect } from 'react';
-import useVideosStore from '../store/videos';
-import { ApiType } from '../types/General';
-import VideoItem from './VideoItem';
 import { fetchMovie } from '../api/movie';
+import useVideosStore from '../store/videos';
+import VideoItem from './VideoItem';
 
 const VideoList = () => {
 	const { videos, setVideos } = useVideosStore();
 
 	useEffect(() => {
-		fetchMovie().then(data => setVideos(data)).catch(e => console.error(e))
+		fetchMovie().then(data => setVideos(data)).catch(e => console.error(e));
 	}, [setVideos]);
 
 	return (
